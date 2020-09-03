@@ -50,7 +50,7 @@ var routes = [
     icon: "nc-icon nc-pin-3",
     component: Maps,
     layout: "/admin",
-  },
+  },*/
   {
     path: "/notifications",
     name: "Notifications",
