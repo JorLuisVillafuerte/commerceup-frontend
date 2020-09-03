@@ -7,6 +7,7 @@ import Maps from "views/Map.js";
 import UserPage from "views/User.js";
 //import UpgradeToPro from "views/Upgrade.js";
 import Categories from "views/Categories";
+import Products from "views/Products";
 var routes = [
   {
     path: "/dashboard",
@@ -23,6 +24,20 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/productos",
+    name: "Productos",
+    icon: "nc-icon nc-app",
+    component: Products,
+    layout: "/admin",
+  },
+  {
+    path: "/user-page",
+    name: "Usuarios",
+    icon: "nc-icon nc-single-02",
+    component: UserPage,
+    layout: "/admin",
+  },/*
+  {
     path: "/icons",
     name: "Icons",
     icon: "nc-icon nc-diamond",
@@ -35,7 +50,7 @@ var routes = [
     icon: "nc-icon nc-pin-3",
     component: Maps,
     layout: "/admin",
-  },*/
+  },
   {
     path: "/notifications",
     name: "Notifications",
@@ -43,14 +58,7 @@ var routes = [
     component: Notifications,
     layout: "/admin",
   },
-  {
-    path: "/user-page",
-    name: "User Profile",
-    icon: "nc-icon nc-single-02",
-    component: UserPage,
-    layout: "/admin",
-  },
-  {
+  /*{
     path: "/tables",
     name: "Table List",
     icon: "nc-icon nc-tile-56",

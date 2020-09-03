@@ -1,24 +1,26 @@
-import React, { useEffect, useContext } from 'react';
+
+import React, { useEffect } from "react";
 import { Line, Pie } from "react-chartjs-2";
-import {Card,CardHeader,CardBody,CardFooter,CardTitle,Row,Col,} from "reactstrap";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  CardTitle,
+  Row,
+  Col,
+} from "reactstrap";
 // core components
-import {dashboard24HoursPerformanceChart,dashboardEmailStatisticsChart,dashboardNASDAQChart,} from "variables/charts.js";
-import CategoriasContext from '../context/Categories/CategoriesContext';
-import ProductsContext from '../context/Products/ProductsContext';
+import {
+  dashboard24HoursPerformanceChart,
+  dashboardEmailStatisticsChart,
+  dashboardNASDAQChart,
+} from "variables/charts.js";
 
-
-const Dashboard = () => {
-    
-    const {obtenerCategorias,categorias} = useContext(CategoriasContext);
-    const {obtenerProductos,productos} = useContext(ProductsContext);
-    
-    useEffect(() => {
-      obtenerCategorias();
-      obtenerProductos();
-    }, [])
-  
-    return ( 
-        <>
+class Dashboard extends React.Component {
+  render() {
+    return (
+      <>
         <div className="content">
           <Row>
             <Col lg="3" md="6" sm="6">
@@ -32,7 +34,7 @@ const Dashboard = () => {
                     </Col>
                     <Col md="8" xs="7">
                       <div className="numbers">
-                        <p className="card-category">Cantidad Categorias</p>
+                        <p className="card-category">Cantidad Productos</p>
                         <CardTitle tag="p">3510</CardTitle>
                         <p />
                       </div>
@@ -135,7 +137,7 @@ const Dashboard = () => {
             <Col md="12">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h5">Proximamente</CardTitle>
+                  <CardTitle tag="h5">Cantidad de ???</CardTitle>
                   <p className="card-category">Informacion</p>
                 </CardHeader>
                 <CardBody>
@@ -211,7 +213,8 @@ const Dashboard = () => {
           </Row>
         </div>
       </>
-     );
+    );
+  }
 }
- 
+
 export default Dashboard;

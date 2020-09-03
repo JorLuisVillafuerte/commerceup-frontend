@@ -23,11 +23,15 @@ export default function useTable(records, headCells,filterFn) {
 
     const classes = useStyles();
 
+    //ESTADOS DEL COMPONENTE
     const pages = [5, 10, 25]
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(pages[page])
     const [order, setOrder] = useState()
     const [orderBy, setOrderBy] = useState()
+
+
+    //COMPONENTES REUTILIZABLES
 
     const TblContainer = props => (
         <Table className={classes.table}>
@@ -63,6 +67,9 @@ export default function useTable(records, headCells,filterFn) {
         </TableHead>)
     }
 
+
+    //FUNCIONES DE LA TABLA
+    
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     }

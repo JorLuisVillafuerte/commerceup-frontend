@@ -1,24 +1,4 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.2.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
-
-// reactstrap components
 import {
   Button,
   Card,
@@ -39,6 +19,7 @@ class User extends React.Component {
       <>
         <div className="content">
           <Row>
+            {/*
             <Col md="4">
               <Card className="card-user">
                 <div className="image">
@@ -186,20 +167,20 @@ class User extends React.Component {
                   </ul>
                 </CardBody>
               </Card>
-            </Col>
+            </Col>*/}
             <Col md="8">
               <Card className="card-user">
                 <CardHeader>
-                  <CardTitle tag="h5">Edit Profile</CardTitle>
+                  <CardTitle tag="h5">Editar Perfil (COMPONENTE EN CONSTRUCCION)</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Form>
                     <Row>
                       <Col className="pr-1" md="5">
                         <FormGroup>
-                          <label>Company (disabled)</label>
+                          <label>Compania (disabled)</label>
                           <Input
-                            defaultValue="Creative Code Inc."
+                            defaultValue="JLV Technologies"
                             disabled
                             placeholder="Company"
                             type="text"
@@ -210,7 +191,7 @@ class User extends React.Component {
                         <FormGroup>
                           <label>Username</label>
                           <Input
-                            defaultValue="michael23"
+                            defaultValue="Jorge Villafuerte"
                             placeholder="Username"
                             type="text"
                           />
@@ -219,7 +200,7 @@ class User extends React.Component {
                       <Col className="pl-1" md="4">
                         <FormGroup>
                           <label htmlFor="exampleInputEmail1">
-                            Email address
+                            Correo electronico
                           </label>
                           <Input placeholder="Email" type="email" />
                         </FormGroup>
@@ -228,20 +209,20 @@ class User extends React.Component {
                     <Row>
                       <Col className="pr-1" md="6">
                         <FormGroup>
-                          <label>First Name</label>
+                          <label>Nombre</label>
                           <Input
-                            defaultValue="Chet"
-                            placeholder="Company"
+                            defaultValue=""
+                            placeholder="Nombre"
                             type="text"
                           />
                         </FormGroup>
                       </Col>
                       <Col className="pl-1" md="6">
                         <FormGroup>
-                          <label>Last Name</label>
+                          <label>Apellido</label>
                           <Input
-                            defaultValue="Faker"
-                            placeholder="Last Name"
+                            defaultValue=""
+                            placeholder="Apellido"
                             type="text"
                           />
                         </FormGroup>
@@ -250,10 +231,10 @@ class User extends React.Component {
                     <Row>
                       <Col md="12">
                         <FormGroup>
-                          <label>Address</label>
+                          <label>Direccion</label>
                           <Input
-                            defaultValue="Melbourne, Australia"
-                            placeholder="Home Address"
+                            defaultValue=""
+                            placeholder="Direccion"
                             type="text"
                           />
                         </FormGroup>
@@ -262,28 +243,28 @@ class User extends React.Component {
                     <Row>
                       <Col className="pr-1" md="4">
                         <FormGroup>
-                          <label>City</label>
+                          <label>Ciudad</label>
                           <Input
-                            defaultValue="Melbourne"
-                            placeholder="City"
+                            defaultValue=""
+                            placeholder="Ciudad"
                             type="text"
                           />
                         </FormGroup>
                       </Col>
                       <Col className="px-1" md="4">
                         <FormGroup>
-                          <label>Country</label>
+                          <label>Pais</label>
                           <Input
-                            defaultValue="Australia"
-                            placeholder="Country"
+                            defaultValue=""
+                            placeholder="Pais"
                             type="text"
                           />
                         </FormGroup>
                       </Col>
                       <Col className="pl-1" md="4">
                         <FormGroup>
-                          <label>Postal Code</label>
-                          <Input placeholder="ZIP Code" type="number" />
+                          <label>Codigo Postal</label>
+                          <Input placeholder="ZIP Codigo" type="number" />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -293,7 +274,7 @@ class User extends React.Component {
                           <label>About Me</label>
                           <Input
                             type="textarea"
-                            defaultValue="Oh so, your weak rhyme You doubt I'll bother, reading into it"
+                            defaultValue=""
                           />
                         </FormGroup>
                       </Col>
@@ -305,7 +286,7 @@ class User extends React.Component {
                           color="primary"
                           type="submit"
                         >
-                          Update Profile
+                          Actualizar perfil
                         </Button>
                       </div>
                     </Row>
