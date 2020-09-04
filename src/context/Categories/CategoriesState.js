@@ -14,13 +14,14 @@ const CategoriesState = (props) => {
         notificacion: null
     }
     //CONFIGURACION DEL DISPATCH 
+
     const [state, dispatch] = useReducer(CategoriesReducer,initialState);
     
     //FUNCIONES DE CATEGORIES
     
     const obtenerCategorias = async()=> {
         try {
-            const result = await AxiosService.get('categorias/');
+            const result = await AxiosService.get('categorias/id/6');
             console.log(result);
             dispatch({
                 type: GET_ALL_CATEGORIES,
@@ -28,6 +29,12 @@ const CategoriesState = (props) => {
             })
         } catch (error) {
             console.log(error);
+            console.log(error.response);
+            const alert = {
+                msg: 'Ops! ocurrio un error al cargar los registros, vuelva a intentar!.',
+                type: 'warning',
+                icon: 'nc-icon nc-bell-55'
+            }
         }
     }
 

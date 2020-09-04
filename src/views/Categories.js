@@ -7,7 +7,7 @@ import { Card,CardBody, CardFooter,CardTitle, Row, Col,} from "reactstrap";
 const Categories = () => {
      
   //CONTEXTO DE CATEGORIAS //ESTADOS DE CATEGORIAS //ESTILOS
-  const {obtenerCategorias, categorias,guardarCategoria, eliminarCategoria,editarCategoria,notificacion} = useContext(CategoriasContext);
+  const {obtenerCategorias, categorias, guardarCategoria, eliminarCategoria, editarCategoria, notificacion} = useContext(CategoriasContext);
   
   //USE EFECCT DE CATEGORIAS
   useEffect(()=>{
