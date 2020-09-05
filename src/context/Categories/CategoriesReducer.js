@@ -1,29 +1,42 @@
-import {GET_ALL_CATEGORIES, ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY} from '../../types/index.js';
+import {GET_ALL_CATEGORIES, ADD_CATEGORY, DELETE_CATEGORY, EDIT_CATEGORY, ERROR_CATEGORY, OK_CATEGORY} from '../../types/index.js';
 
 export default (state,action) => {
     switch (action.type) {
         case GET_ALL_CATEGORIES:
             return {
                 ...state,
-                categorias: action.payload
+                categorias: action.payload,
+                error: false
             }
         case ADD_CATEGORY:
             return {
                 ...state,
                 categorias: [...state.categorias, action.payload],
-                notificacion: {msg: 'El registro fue agregado correctamente', type: 'success', icon: 'nc-icon nc-bell-55'}
+                error: false
             }
         case EDIT_CATEGORY:
             return {
                 ...state,
                 categorias: state.categorias.map(categoria => categoria.internalid === action.payload.internalid ? action.payload : categoria),
-                notificacion: {msg: 'El registro fue editado correctamente', type: 'success', icon: 'nc-icon nc-bell-55'}
+                error: false
             }
         case DELETE_CATEGORY:
             return {
                 ...state,
                 categorias: state.categorias.filter(categoria => categoria.internalid !== action.payload),
-                notificacion: {msg: 'El registro fue eliminado correctamente', type: 'danger', icon: 'nc-icon nc-bell-55'}
+                error: false
+            }
+        case ERROR_CATEGORY:
+            return {
+                ...state,
+                msg: action.payload,
+                error: true
+            }
+        case OK_CATEGORY:
+            return {
+                ...state,
+                msg: action.payload,
+                error: false
             }
     
         default:

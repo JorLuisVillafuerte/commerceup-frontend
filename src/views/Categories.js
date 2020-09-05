@@ -7,34 +7,27 @@ import { Card,CardBody, CardFooter,CardTitle, Row, Col,} from "reactstrap";
 const Categories = () => {
      
   //CONTEXTO DE CATEGORIAS //ESTADOS DE CATEGORIAS //ESTILOS
-  const {obtenerCategorias, categorias, guardarCategoria, eliminarCategoria, editarCategoria, notificacion} = useContext(CategoriasContext);
-  
-  //USE EFECCT DE CATEGORIAS
-  useEffect(()=>{
-      obtenerCategorias();
-      if(notificacion){
-          showNotify(notificacion);
-      }
-  },[notificacion]);
-
+  const {obtenerCategorias, categorias, guardarCategoria, eliminarCategoria, editarCategoria, msg} = useContext(CategoriasContext);
   //NOTIFICACIONES
   const notify = useRef(null);
-  const showNotify = (notificacion) => {
-      notify.current.notificationAlert({place:'bc', message: notificacion.msg, type: notificacion.type,icon:notificacion.icon,closeButton: true});
-  }
-
+  //USE EFECCT DE CATEGORIAS
+  useEffect(()=>{
+    obtenerCategorias();
+    if(msg){
+      notify.current.notificationAlert({place:'br', message: msg.msg, type: msg.type, icon:msg.icon , closeButton: true, autoDismiss: 10});
+    }
+  },[msg]);
   //MANEJO DE UPDATE/DELETE/ADD
   const handleRowUpdate = async (newData, oldData, resolve) =>{
-      editarCategoria(newData); 
+    editarCategoria(newData); 
   }
   const handleRowDelete = (oldData, resolve) => {
-      console.log(oldData.internalid);
-      eliminarCategoria(oldData.internalid);
+    console.log(oldData.internalid);
+    eliminarCategoria(oldData.internalid);
   }
-  const handleRowAdd = (newData, resolve) => {
-      
-      console.log(newData);
-      guardarCategoria(newData);
+  const handleRowAdd = (newData, resolve) => {  
+    console.log(newData);
+    guardarCategoria(newData);
   } 
   //COLUMNAS DE LA TABLA y VALIDACIONES
   
@@ -54,52 +47,24 @@ const Categories = () => {
       { 1: 'Disponible', 2: 'No Disponible' },
     },
   ]
-  if(categorias.length === 0){
+  if(categorias.length === 0 ){
     return (
-      <>
-        <div className="content">
-          <LinearProgress />
-        </div>
-      </>
+      <div className="content">
+        <LinearProgress />
+      </div>
     );
   }
   return (
     <>
       <div className="content">
-        <Col lg="3" md="6" sm="6">
-        <Card className="card-stats">
-            <CardBody>
-              <Row>
-                <Col md="4" xs="5">
-                  <div className="icon-big text-center icon-warning">
-                    <i className="nc-icon nc-tile-56 text-info" />
-                  </div>
-                </Col>
-                <Col md="8" xs="7">
-                  <div className="numbers">
-                    <p className="card-category">Cantidad de Categorias</p>
-                        <CardTitle tag="p">{categorias.length}</CardTitle>
-                    <p />
-                  </div>
-                </Col>
-              </Row>
-            </CardBody>
-            <CardFooter>
-              <hr />
-              <div className="stats">
-                <i className="fas fa-sync-alt" /> Actualizar ahora
-              </div>
-            </CardFooter>
-        </Card>
-        </Col>
         <NotificationAlert ref={notify} />
         <TableAction 
-            title={'Listado de Categorias'}
-            columns={columns}
-            data={categorias}
-            handleRowUpdate={handleRowUpdate}
-            handleRowDelete={handleRowDelete}
-            handleRowAdd={handleRowAdd}
+          title={'Listado de Categorias'}
+          columns={columns}
+          data={categorias}
+          handleRowUpdate={handleRowUpdate}
+          handleRowDelete={handleRowDelete}
+          handleRowAdd={handleRowAdd}
         />
       </div>
     </>
