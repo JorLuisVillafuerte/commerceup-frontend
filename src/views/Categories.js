@@ -14,11 +14,23 @@ const Categories = () => {
   useEffect(()=>{
     obtenerCategorias();
     if(msg){
-      notify.current.notificationAlert({place:'br', message: msg.msg, type: msg.type, icon:msg.icon , closeButton: true, autoDismiss: 10});
+      notify.current.notificationAlert({
+        place:'br', 
+        message: (
+          <div>
+            {msg.msg}<br></br>
+            <b>Indicacion: {msg.indicacion}</b>
+          </div>
+        ),
+        type: msg.type, 
+        icon:msg.icon , 
+        closeButton: true, 
+        autoDismiss: 10});
     }
   },[msg]);
   //MANEJO DE UPDATE/DELETE/ADD
   const handleRowUpdate = async (newData, oldData, resolve) =>{
+    console.log(newData);
     editarCategoria(newData); 
   }
   const handleRowDelete = (oldData, resolve) => {
@@ -47,6 +59,8 @@ const Categories = () => {
       { 1: 'Disponible', 2: 'No Disponible' },
     },
   ]
+
+  //RENDER DEL COMPONENTE
   if(categorias.length === 0 ){
     return (
       <div className="content">
@@ -64,7 +78,6 @@ const Categories = () => {
           data={categorias}
           handleRowUpdate={handleRowUpdate}
           handleRowDelete={handleRowDelete}
-          handleRowAdd={handleRowAdd}
         />
       </div>
     </>

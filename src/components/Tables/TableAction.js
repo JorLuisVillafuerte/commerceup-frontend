@@ -18,13 +18,6 @@ export default function MaterialTableDemo(props) {
             resolve();
           }, 2000)
         }),
-        onRowAdd : (newData) => 
-        new Promise ((resolve) => { 
-          props.handleRowAdd (newData, resolve)
-          setTimeout(() => {
-            resolve();
-          }, 2000) 
-        }), 
         onRowDelete : (oldData) => 
         new Promise ((resolve) => { 
           props.handleRowDelete (oldData, resolve) 

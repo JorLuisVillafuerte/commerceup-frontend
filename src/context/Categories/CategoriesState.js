@@ -25,7 +25,7 @@ const CategoriesState = (props) => {
                 payload: result.data
             })
         } catch (error) {
-            console.log(error);
+            console.log(error.response);
             const alert = {msg: 'Ops! ocurrio un error al cargar los registros, vuelva a intentar!.', type: 'warning', icon: 'nc-icon nc-bell-55'}
             dispatch({
                 type: ERROR_CATEGORY,
@@ -70,8 +70,8 @@ const CategoriesState = (props) => {
             });
 
         } catch (error) {
-            console.log(error);
-            const alert = { msg: 'Ops! ocurrio un error al editar el registro.', type: 'warning',icon: 'nc-icon nc-bell-55'}
+            console.log(error.response);
+            const alert = { msg: 'Ops! ocurrio un error al editar el registro.',indicacion: error.response.data.message, type: 'danger',icon: 'nc-icon nc-bell-55'}
             dispatch({
                 type: ERROR_CATEGORY,
                 payload: alert
