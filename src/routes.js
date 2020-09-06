@@ -36,7 +36,7 @@ var routes = [
     icon: "nc-icon nc-single-02",
     component: UserPage,
     layout: "/admin",
-  },/*
+  },
   {
     path: "/icons",
     name: "Icons",

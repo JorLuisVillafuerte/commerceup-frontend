@@ -9,8 +9,8 @@ export default function MaterialTableDemo(props) {
       title={props.title}
       columns={props.columns}
       data={props.data}
-      isLoading={props.isLoading}
       editable={{
+        onRowAdd: null,
         onRowUpdate: (newData, oldData) =>
         new Promise((resolve) => {
           props.handleRowUpdate(newData, oldData, resolve);
@@ -26,6 +26,15 @@ export default function MaterialTableDemo(props) {
           }, 2000)
         }) 
       }}
+      actions={[
+        {
+          icon: 'search',
+          tooltip: 'Ver categoria',
+          onClick: (event, rowData) => {
+            console.log('aaaa')
+          }
+        }
+      ]}
       localization={{          
         body: {
             emptyDataSourceMessage: 'No hay registros para mostrar',
@@ -41,7 +50,8 @@ export default function MaterialTableDemo(props) {
         },
       }}
       options={{
-        pageSize: 10
+        pageSize: 10,
+        actionsColumnIndex: -1
       }}
     />
   );

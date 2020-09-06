@@ -3,14 +3,12 @@ import CategoriasContext from '../context/Categories/CategoriesContext';
 import TableAction from '../components/Tables/TableAction'; 
 import { LinearProgress } from "@material-ui/core";
 import NotificationAlert from "react-notification-alert";
-import { Card,CardBody, CardFooter,CardTitle, Row, Col,} from "reactstrap";
+//import { Card,CardBody, CardFooter,CardTitle, Row, Col,} from "reactstrap";
 const Categories = () => {
-     
-  //CONTEXTO DE CATEGORIAS //ESTADOS DE CATEGORIAS //ESTILOS
+    
+  //HOOKS DE CONTEXT/REF/USEEFFECT/USESTATE
   const {obtenerCategorias, categorias, guardarCategoria, eliminarCategoria, editarCategoria, msg} = useContext(CategoriasContext);
-  //NOTIFICACIONES
   const notify = useRef(null);
-  //USE EFECCT DE CATEGORIAS
   useEffect(()=>{
     obtenerCategorias();
     if(msg){
@@ -19,7 +17,7 @@ const Categories = () => {
         message: (
           <div>
             {msg.msg}<br></br>
-            <b>Indicacion: {msg.indicacion}</b>
+            <b>{(typeof msg.indicacion === 'undefined')? null:  'Indicacion: ' + msg.indicacion}</b>
           </div>
         ),
         type: msg.type, 
@@ -31,7 +29,7 @@ const Categories = () => {
   //MANEJO DE UPDATE/DELETE/ADD
   const handleRowUpdate = async (newData, oldData, resolve) =>{
     console.log(newData);
-    editarCategoria(newData); 
+    editarCategoria(newData);     
   }
   const handleRowDelete = (oldData, resolve) => {
     console.log(oldData.internalid);
@@ -52,9 +50,9 @@ const Categories = () => {
     {title: 'Descripcion', field: 'description',},
     {title: 'Fecha creacion', field: 'dateCreated', type: 'date', editable: 'never'},
     {title: 'Target', field: 'targetType', lookup: 
-      { 'niños': 'niños', 'niñas': 'niñas', 'bebe': 'bebe', 'beba': 'beba','hombre': 'hombre','mujer': 'mujer' },},
+      { 'niños': 'Niños', 'niñas': 'Niñas', 'bebe': 'Bebe', 'beba': 'Beba','hombre': 'Hombre','mujer': 'Mujer' },},
     {title: 'Temporada', field: 'seasonType', lookup: 
-      { 'verano': 'Verano', 'primavera': 'Primavera', 'invierno': 'Invierno', 'otoño': 'Otoño', 'otoño/invierno': 'Otoño/Invierno','primavera/verano': 'Primavera/Verano','todos': 'Todos'},},
+      {'primavera': 'Primavera','verano': 'Verano','primavera/verano': 'Primavera/Verano','otoño': 'Otoño', 'invierno': 'Invierno', 'otoño/invierno': 'Otoño/Invierno','todos': 'Todos'},},
     {title: 'Estado', field: 'statusId.internalid',lookup: 
       { 1: 'Disponible', 2: 'No Disponible' },
     },

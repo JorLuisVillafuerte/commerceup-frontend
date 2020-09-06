@@ -58,6 +58,7 @@ const CategoriesState = (props) => {
     }
     const editarCategoria = async(categoria) =>{
         try {
+            console.log(categoria);
             const result = await AxiosService.post('categorias/',categoria);
             const alert = { msg: 'El registro fue editado correctamente', type: 'success', icon: 'nc-icon nc-bell-55'}
             dispatch({
@@ -82,7 +83,7 @@ const CategoriesState = (props) => {
     const eliminarCategoria = async(categoria)=> {
         try {
             const result = await AxiosService.delete(`categorias/id/${categoria}`);
-            const alert = { msg: 'El registro fue agregado correctamente', type: 'success', icon: 'nc-icon nc-bell-55'}
+            const alert = { msg: 'El registro fue eliminado correctamente', type: 'success', icon: 'nc-icon nc-bell-55'}
             console.log(result);
             dispatch({
                 type: DELETE_CATEGORY,
